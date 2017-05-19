@@ -1,4 +1,7 @@
-
+/**
+ * @author xue yang
+ *
+ */
 
 public interface VideoInfo {
 

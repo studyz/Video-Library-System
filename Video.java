@@ -1,5 +1,8 @@
 
-
+/**
+ * @author xue yang
+ *
+ */
 public class Video implements VideoInfo, BorrowerInfo {
 	private int videoID, borrowerID;
 	private String videoTitle, borrowerName;
@@ -17,6 +20,7 @@ public class Video implements VideoInfo, BorrowerInfo {
 	public void setVideoID(int vID) {
 		videoID = vID;
 	}
+
 	public int getVideoID() {
 		return videoID;
 	}
@@ -25,15 +29,16 @@ public class Video implements VideoInfo, BorrowerInfo {
 	public void setvideoTitle(String vTitle) {
 		videoTitle = vTitle;
 	}
-	
+
 	public String getvideoTitle() {
 		return videoTitle;
 	}
 
 	// video flag
 	public void setVideoFlag() {
-		flag =  true;
+		flag = true;
 	}
+
 	public boolean getVideoFlag() {
 		return flag;
 	}
@@ -42,6 +47,7 @@ public class Video implements VideoInfo, BorrowerInfo {
 	public void setBorrowerID(int bID) {
 		borrowerID = bID;
 	}
+
 	public int getBorrowerID() {
 		// TODO Auto-generated method stub
 		return borrowerID;
@@ -51,7 +57,7 @@ public class Video implements VideoInfo, BorrowerInfo {
 	public void setborrowerName(String bName) {
 		borrowerName = bName;
 	}
-	
+
 	public String getborrowerName() {
 		return borrowerName;
 	}

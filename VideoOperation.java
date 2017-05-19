@@ -1,23 +1,25 @@
-
+/**
+ * @author xue yang
+ *
+ */
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.regex.*;
 
 public class VideoOperation {
 
-	ReadWrite rw = new ReadWrite();
+	DataHandler rw = new DataHandler();
 	Scanner sc = new Scanner(System.in);
 
 	// list Video, read all videos from file
 	public void listVideo() {
-		rw.printVideoArrayList(rw.readIntoArrayList());
+		rw.printArrayList(rw.readIntoArrayList());
 	}
 
 	// borrow Video, modify flag, add borrower ID and borrower Name
 	public void borrowVideo() {
 		System.out.print("plz enter video ID you wanna borrow: ");
 
-		Hashtable<Integer, Video> videos = rw.readIntoHashWithID();
+		Hashtable<Integer, Video> videos = rw.readIntoHashTable();
 		int borrowVideoID = sc.nextInt();
 		if (isExist(borrowVideoID, "") == true) {
 			if (videos.get(borrowVideoID).getVideoFlag() == false) {
@@ -73,7 +75,7 @@ public class VideoOperation {
 	public void modifyVideo() {
 		Scanner scan = new Scanner(System.in);
 		ArrayList<Video> videos = rw.readIntoArrayList();
-		rw.printVideoArrayList(videos);
+		rw.printArrayList(videos);
 		System.out.print("Please enter Video ID you wanna modify: ");
 		int delVideoID = sc.nextInt();
 		if (isExist(delVideoID, "") == true && videos.size() != 0) {
@@ -85,7 +87,7 @@ public class VideoOperation {
 
 				if (isExist(newVideoID, newVideoName) == false) {
 					System.out.println("New Video is: " + newVideoID + "\t" + newVideoName + "\n");
-					Hashtable<Integer, Video> videolist = rw.readIntoHashWithID();
+					Hashtable<Integer, Video> videolist = rw.readIntoHashTable();
 					videolist.get(delVideoID).setVideoID(newVideoID);
 					videolist.get(delVideoID).setvideoTitle(newVideoName);
 //					rw.printVideoList(videolist);
@@ -104,7 +106,7 @@ public class VideoOperation {
 	// delete Video, delete video by video ID
 	public void deleteVideo() {
 		ArrayList<Video> videos = rw.readIntoArrayList();
-		rw.printVideoArrayList(videos);
+		rw.printArrayList(videos);
 		System.out.print("Please enter Video ID to delete video: ");
 		int delVideoID = sc.nextInt();
 		if (isExist(delVideoID, "") == true && videos.size() != 0) {
@@ -137,7 +139,7 @@ public class VideoOperation {
 			}
 		}
 		if (resulltList.size() != 0) {
-			rw.printVideoArrayList(resulltList);
+			rw.printArrayList(resulltList);
 		} else {
 			System.out.println("id video not exist!!");
 		}
@@ -157,7 +159,7 @@ public class VideoOperation {
 			}
 		}
 		if (resulltList.size() != 0) {
-			rw.printVideoArrayList(resulltList);
+			rw.printArrayList(resulltList);
 		} else {
 			System.out.println("title video not exist!!");
 		}
