@@ -5,12 +5,12 @@
 
 public interface VideoInfo {
 
-	//get video ID
+	// get video ID
 	public int getVideoID();
 
-	//get video title
+	// get video title
 	public String getvideoTitle();
 
-	//get video flag
+	// get video flag
 	public boolean getVideoFlag();
 }

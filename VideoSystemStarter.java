@@ -1,3 +1,4 @@
+
 /**
  * @author xue yang
  *
@@ -5,10 +6,7 @@
 import java.io.*;
 import java.util.*;
 
-
-
-
-public class Controler {
+public class VideoSystemStarter {
 	/**
 	 * @param args
 	 * @throws IOException
@@ -16,9 +14,9 @@ public class Controler {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		String Notice = "=========================\n" + "1.List all Videos\n" + "2.Add a New Video\n"
-				+ "3.Borrow a Video\n" + "4.Modify Video Details\n" + "5.Delete a Video\n" + "6.Search for Video\n"
-				+ "7.Exit\n" + "=========================";
+		String Notice = "=========================\n" + "0.Print Command Lists\n" + "1.List all Videos\n"
+				+ "2.Add a New Video\n" + "3.Borrow a Video\n" + "4.Modify Video Details\n" + "5.Delete a Video\n"
+				+ "6.Search for Video\n" + "7.Exit\n" + "=========================";
 
 		System.out.println(Notice);
 		try {

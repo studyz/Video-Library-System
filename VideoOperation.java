@@ -1,3 +1,4 @@
+
 /**
  * @author xue yang
  *
@@ -5,21 +6,20 @@
 import java.util.*;
 import java.util.regex.*;
 
-public class VideoOperation {
-
-	DataHandler rw = new DataHandler();
+public class VideoOperation extends DataHandler {
 	Scanner sc = new Scanner(System.in);
 
 	// list Video, read all videos from file
 	public void listVideo() {
-		rw.printArrayList(rw.readIntoArrayList());
+		super.printArrayList(super.readIntoArrayList());
+		// rw.printArrayList(rw.readIntoArrayList());
 	}
 
 	// borrow Video, modify flag, add borrower ID and borrower Name
 	public void borrowVideo() {
 		System.out.print("plz enter video ID you wanna borrow: ");
 
-		Hashtable<Integer, Video> videos = rw.readIntoHashTable();
+		Hashtable<Integer, VideoRecorder> videos = super.readIntoHashTable();
 		int borrowVideoID = sc.nextInt();
 		if (isExist(borrowVideoID, "") == true) {
 			if (videos.get(borrowVideoID).getVideoFlag() == false) {
@@ -33,8 +33,8 @@ public class VideoOperation {
 					videos.get(borrowVideoID).setVideoFlag();
 					videos.get(borrowVideoID).setBorrowerID(newBorrowerID);
 					videos.get(borrowVideoID).setborrowerName(newborrowerName);
-//					rw.printVideoList(videos);
-					rw.writeHashMap(videos);
+					// rw.printVideoList(videos);
+					super.writeHashMap(videos);
 				} catch (Exception e) {
 					System.out.println("Invalid Input!!");
 				}
@@ -50,7 +50,7 @@ public class VideoOperation {
 
 	// add Video into file
 	public void addVideo() {
-		System.out.print("plz enter video ID and video split with tab: ");
+		System.out.print("plz enter video ID and video title split with tab: ");
 		String input = sc.nextLine();
 		try {
 			int newVideoID = Integer.parseInt(input.split("\t")[0]);
@@ -58,11 +58,11 @@ public class VideoOperation {
 
 			if (isExist(newVideoID, newVideoName) == false) {
 				System.out.println("New Video is: " + newVideoID + "\t" + newVideoName + "\n");
-				ArrayList<Video> videoList = rw.readIntoArrayList();
-				Video newVideo = new Video(newVideoID, newVideoName, false, 0, "null");
+				ArrayList<VideoRecorder> videoList = super.readIntoArrayList();
+				VideoRecorder newVideo = new VideoRecorder(newVideoID, newVideoName, false, 0, "null");
 				videoList.add(newVideo);
-				rw.writeArrayList(videoList);
-//				rw.printVideoArrayList(videoList);
+				super.writeArrayList(videoList);
+				// rw.printVideoArrayList(videoList);
 			} else {
 				System.out.println("Video is alrady exist!!");
 			}
@@ -74,8 +74,8 @@ public class VideoOperation {
 	// modify Video, modify video ID & video Title
 	public void modifyVideo() {
 		Scanner scan = new Scanner(System.in);
-		ArrayList<Video> videos = rw.readIntoArrayList();
-		rw.printArrayList(videos);
+		ArrayList<VideoRecorder> videos = super.readIntoArrayList();
+		super.printArrayList(videos);
 		System.out.print("Please enter Video ID you wanna modify: ");
 		int delVideoID = sc.nextInt();
 		if (isExist(delVideoID, "") == true && videos.size() != 0) {
@@ -87,11 +87,11 @@ public class VideoOperation {
 
 				if (isExist(newVideoID, newVideoName) == false) {
 					System.out.println("New Video is: " + newVideoID + "\t" + newVideoName + "\n");
-					Hashtable<Integer, Video> videolist = rw.readIntoHashTable();
+					Hashtable<Integer, VideoRecorder> videolist = super.readIntoHashTable();
 					videolist.get(delVideoID).setVideoID(newVideoID);
 					videolist.get(delVideoID).setvideoTitle(newVideoName);
-//					rw.printVideoList(videolist);
-					rw.writeHashMap(videolist);
+					// rw.printVideoList(videolist);
+					super.writeHashMap(videolist);
 				} else {
 					System.out.println("Info has alrady exist!!");
 				}
@@ -105,41 +105,40 @@ public class VideoOperation {
 
 	// delete Video, delete video by video ID
 	public void deleteVideo() {
-		ArrayList<Video> videos = rw.readIntoArrayList();
-		rw.printArrayList(videos);
+		ArrayList<VideoRecorder> videos = super.readIntoArrayList();
+		super.printArrayList(videos);
 		System.out.print("Please enter Video ID to delete video: ");
 		int delVideoID = sc.nextInt();
 		if (isExist(delVideoID, "") == true && videos.size() != 0) {
-			for (Video video : videos) {
+			for (VideoRecorder video : videos) {
 				if (video.getVideoID() == delVideoID) {
 					videos.remove(video);
 					// need to write into file here
-//					rw.printVideoArrayList(videos);
-					rw.writeArrayList(videos);
+					// rw.printVideoArrayList(videos);
+					super.writeArrayList(videos);
 					break;
 				}
 			}
-		
+
 		} else {
 			System.out.println("Please enter valid video ID!!");
 		}
 
 	}
 
-	
 	// search Video By video ID
 	public void searchVideoByID() {
 
 		System.out.print("Please enter video ID: ");
 		int rawID = sc.nextInt();
-		ArrayList<Video> resulltList = new ArrayList<Video>();
-		for (Video video : rw.readIntoArrayList()) {
+		ArrayList<VideoRecorder> resulltList = new ArrayList<VideoRecorder>();
+		for (VideoRecorder video : super.readIntoArrayList()) {
 			if (rawID == video.getVideoID()) {
 				resulltList.add(video);
 			}
 		}
 		if (resulltList.size() != 0) {
-			rw.printArrayList(resulltList);
+			super.printArrayList(resulltList);
 		} else {
 			System.out.println("id video not exist!!");
 		}
@@ -150,8 +149,8 @@ public class VideoOperation {
 
 		System.out.println("Please enter video title: ");
 		String rawTitle = sc.next();
-		ArrayList<Video> resulltList = new ArrayList<Video>();
-		for (Video video : rw.readIntoArrayList()) {
+		ArrayList<VideoRecorder> resulltList = new ArrayList<VideoRecorder>();
+		for (VideoRecorder video : super.readIntoArrayList()) {
 			Pattern p = Pattern.compile(rawTitle.toLowerCase());
 			Matcher m = p.matcher(video.getvideoTitle().toLowerCase());
 			if (m.find()) {
@@ -159,7 +158,7 @@ public class VideoOperation {
 			}
 		}
 		if (resulltList.size() != 0) {
-			rw.printArrayList(resulltList);
+			super.printArrayList(resulltList);
 		} else {
 			System.out.println("title video not exist!!");
 		}
@@ -167,11 +166,11 @@ public class VideoOperation {
 
 	// check video in database
 	public boolean isExist(int newVideoID, String newVideoTitle) {
-		ArrayList<Video> videoList = rw.readIntoArrayList();
+		ArrayList<VideoRecorder> videoList = super.readIntoArrayList();
 		// Hashtable<Integer, Video> videoList = rw.readFile();
 		int flag = 0;
 
-		for (Video video : videoList) {
+		for (VideoRecorder video : videoList) {
 			if (video.getvideoTitle().toLowerCase().equals(newVideoTitle.toLowerCase())
 					|| video.getVideoID() == newVideoID) {
 				flag = 1;

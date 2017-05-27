@@ -3,15 +3,15 @@
  *
  */
 public interface BorrowerInfo {
-	//get borrowerID
+	// get borrowerID
 	public int getBorrowerID();
-	
-	//et borrowerID
+
+	// et borrowerID
 	public void setBorrowerID(int bID);
 
-	//get borrowerName
+	// get borrowerName
 	public String getborrowerName();
-	
-	//set borrowerName
+
+	// set borrowerName
 	public void setborrowerName(String bName);
 }

@@ -3,12 +3,12 @@
  * @author xue yang
  *
  */
-public class Video implements VideoInfo, BorrowerInfo {
+public class VideoRecorder implements VideoInfo, BorrowerInfo {
 	private int videoID, borrowerID;
 	private String videoTitle, borrowerName;
 	private boolean flag;
 
-	public Video(int videoID, String videoTitle, boolean flag, int borrowerID, String borrowerName) {
+	public VideoRecorder(int videoID, String videoTitle, boolean flag, int borrowerID, String borrowerName) {
 		this.videoID = videoID;
 		this.videoTitle = videoTitle;
 		this.flag = flag;
