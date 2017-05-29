@@ -6,15 +6,15 @@
 import java.util.*;
 
 public interface DataInterface {
-	public ArrayList<VideoRecorder> readIntoArrayList();
+	public ArrayList<VideoRecord> readIntoArrayList();
 
-	public Hashtable<Integer, VideoRecorder> readIntoHashTable();
+	public Hashtable<Integer, VideoRecord> readIntoHashTable();
 
-	public void writeArrayList(ArrayList<VideoRecorder> videoList);
+	public void writeArrayList(ArrayList<VideoRecord> videoList);
 
-	public void writeHashMap(Hashtable<Integer, VideoRecorder> videoList);
+	public void writeHashMap(Hashtable<Integer, VideoRecord> videoList);
 
-	public void printArrayList(ArrayList<VideoRecorder> videoList);
+	public void printArrayList(ArrayList<VideoRecord> videoList);
 
 	// public void printhHashTable(Hashtable<Integer, VideoRecorder> videoList);
 

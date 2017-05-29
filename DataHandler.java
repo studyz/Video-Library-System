@@ -10,8 +10,8 @@ public class DataHandler implements DataInterface {
 
 	@Override
 	// read data into a arraylist
-	public ArrayList<VideoRecorder> readIntoArrayList() {
-		ArrayList<VideoRecorder> videoList = new ArrayList<VideoRecorder>();
+	public ArrayList<VideoRecord> readIntoArrayList() {
+		ArrayList<VideoRecord> videoList = new ArrayList<VideoRecord>();
 		try {
 			Scanner scanFile = new Scanner(new File("videodata.dat"));
 
@@ -29,7 +29,7 @@ public class DataHandler implements DataInterface {
 					bID = Integer.parseInt(infoList.get(3));
 					bName = infoList.get(4);
 				}
-				VideoRecorder item = new VideoRecorder(vID, vTitle, vFlag, bID, bName);
+				VideoRecord item = new VideoRecord(vID, vTitle, vFlag, bID, bName);
 				videoList.add(item);
 				// videoList.add(item);
 			}
@@ -44,8 +44,8 @@ public class DataHandler implements DataInterface {
 
 	@Override
 	// read data into a hashtable
-	public Hashtable<Integer, VideoRecorder> readIntoHashTable() {
-		Hashtable<Integer, VideoRecorder> videoList = new Hashtable<Integer, VideoRecorder>();
+	public Hashtable<Integer, VideoRecord> readIntoHashTable() {
+		Hashtable<Integer, VideoRecord> videoList = new Hashtable<Integer, VideoRecord>();
 		try {
 			Scanner scanFile = new Scanner(new File("videodata.dat"));
 
@@ -63,7 +63,7 @@ public class DataHandler implements DataInterface {
 					bID = Integer.parseInt(infoList.get(3));
 					bName = infoList.get(4);
 				}
-				VideoRecorder item = new VideoRecorder(vID, vTitle, vFlag, bID, bName);
+				VideoRecord item = new VideoRecord(vID, vTitle, vFlag, bID, bName);
 				videoList.put(item.getVideoID(), item);
 				// videoList.add(item);
 			}
@@ -78,11 +78,11 @@ public class DataHandler implements DataInterface {
 
 	@Override
 	// write data from arraylist
-	public void writeArrayList(ArrayList<VideoRecorder> videoList) {
+	public void writeArrayList(ArrayList<VideoRecord> videoList) {
 		try {
 			PrintWriter output = new PrintWriter(new FileWriter("videodata.dat"));
 			String allData = "";
-			for (VideoRecorder video : videoList) {
+			for (VideoRecord video : videoList) {
 				allData += video.toString() + "\n";
 			}
 			output.println(allData.substring(0, allData.length() - 1));
@@ -97,11 +97,11 @@ public class DataHandler implements DataInterface {
 
 	@Override
 	// write data from arrayHasmap
-	public void writeHashMap(Hashtable<Integer, VideoRecorder> hashList) {
+	public void writeHashMap(Hashtable<Integer, VideoRecord> hashList) {
 		try {
 			PrintWriter output = new PrintWriter(new FileWriter("videodata.dat"));
 			String allData = "";
-			for (VideoRecorder video : hashList.values()) {
+			for (VideoRecord video : hashList.values()) {
 				allData += video.toString() + "\n";
 			}
 			output.println(allData.substring(0, allData.length() - 1));
@@ -116,12 +116,12 @@ public class DataHandler implements DataInterface {
 
 	@Override
 	// print video recorders from arraylist
-	public void printArrayList(ArrayList<VideoRecorder> arrayList) {
+	public void printArrayList(ArrayList<VideoRecord> arrayList) {
 		System.out.println("\n---------------------------------------------------------------");
 		System.out.format("%5s%20s %8s %10s %15s\n", "Vid", "Vtitle", "Borrowed", "BorrowerID", "BorrowerName");
 		System.out.println("---------------------------------------------------------------");
 		// String line = "";
-		for (VideoRecorder item : arrayList) {
+		for (VideoRecord item : arrayList) {
 			// line += item.getVideoID() + "\t" + item.getvideoTitle() + "\t" +
 			// item.getVideoFlag();
 			if (item.getVideoFlag() != false) {

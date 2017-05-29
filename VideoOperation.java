@@ -19,7 +19,7 @@ public class VideoOperation extends DataHandler {
 	public void borrowVideo() {
 		System.out.print("plz enter video ID you wanna borrow: ");
 
-		Hashtable<Integer, VideoRecorder> videos = super.readIntoHashTable();
+		Hashtable<Integer, VideoRecord> videos = super.readIntoHashTable();
 		int borrowVideoID = sc.nextInt();
 		if (isExist(borrowVideoID, "") == true) {
 			if (videos.get(borrowVideoID).getVideoFlag() == false) {
@@ -51,7 +51,7 @@ public class VideoOperation extends DataHandler {
 
 	// return video
 	public void returnVideo() {
-		Hashtable<Integer, VideoRecorder> videos = super.readIntoHashTable();
+		Hashtable<Integer, VideoRecord> videos = super.readIntoHashTable();
 		try {
 			System.out.print("Please enter Video ID of which you want to return: ");
 			int borrowedVideoID = sc.nextInt();
@@ -80,8 +80,8 @@ public class VideoOperation extends DataHandler {
 
 			if (isExist(newVideoID, newVideoName) == false) {
 				System.out.println("New Video is: " + newVideoID + "\t" + newVideoName);
-				ArrayList<VideoRecorder> videoList = super.readIntoArrayList();
-				VideoRecorder newVideo = new VideoRecorder(newVideoID, newVideoName, false, 0, "null");
+				ArrayList<VideoRecord> videoList = super.readIntoArrayList();
+				VideoRecord newVideo = new VideoRecord(newVideoID, newVideoName, false, 0, "null");
 				videoList.add(newVideo);
 				super.writeArrayList(videoList);
 				// rw.printVideoArrayList(videoList);
@@ -96,7 +96,7 @@ public class VideoOperation extends DataHandler {
 	// modify Video recorder, modify video ID & video Title
 	public void modifyVideo() {
 
-		ArrayList<VideoRecorder> videos = super.readIntoArrayList();
+		// ArrayList<VideoRecord> videos = super.readIntoArrayList();
 		// super.printArrayList(videos);
 		System.out.print("Please enter Video ID you wanna modify: ");
 		int delVideoID = sc.nextInt();
@@ -110,7 +110,7 @@ public class VideoOperation extends DataHandler {
 
 				if (delVideoID == newVideoID || isExist(newVideoID, newVideoName) == false) {
 					System.out.println("New Video is: " + newVideoID + "\t" + newVideoName);
-					Hashtable<Integer, VideoRecorder> videolist = super.readIntoHashTable();
+					Hashtable<Integer, VideoRecord> videolist = super.readIntoHashTable();
 					videolist.get(delVideoID).setVideoID(newVideoID);
 					videolist.get(delVideoID).setvideoTitle(newVideoName);
 					// rw.printVideoList(videolist);
@@ -130,12 +130,12 @@ public class VideoOperation extends DataHandler {
 
 	// delete Video recorder, delete video by video ID
 	public void deleteVideo() {
-		ArrayList<VideoRecorder> videos = super.readIntoArrayList();
+		ArrayList<VideoRecord> videos = super.readIntoArrayList();
 		// super.printArrayList(videos);
 		System.out.print("Please enter Video ID to delete video: ");
 		int delVideoID = sc.nextInt();
 		if (isExist(delVideoID, "") == true) {
-			for (VideoRecorder video : videos) {
+			for (VideoRecord video : videos) {
 				if (video.getVideoID() == delVideoID) {
 					videos.remove(video);
 					// need to write into file here
@@ -156,8 +156,8 @@ public class VideoOperation extends DataHandler {
 
 		System.out.print("Please enter video ID: ");
 		int rawID = sc.nextInt();
-		ArrayList<VideoRecorder> resulltList = new ArrayList<VideoRecorder>();
-		for (VideoRecorder video : super.readIntoArrayList()) {
+		ArrayList<VideoRecord> resulltList = new ArrayList<VideoRecord>();
+		for (VideoRecord video : super.readIntoArrayList()) {
 			if (rawID == video.getVideoID()) {
 				resulltList.add(video);
 			}
@@ -174,8 +174,8 @@ public class VideoOperation extends DataHandler {
 
 		System.out.print("Please enter video title: ");
 		String rawTitle = sc.next();
-		ArrayList<VideoRecorder> resulltList = new ArrayList<VideoRecorder>();
-		for (VideoRecorder video : super.readIntoArrayList()) {
+		ArrayList<VideoRecord> resulltList = new ArrayList<VideoRecord>();
+		for (VideoRecord video : super.readIntoArrayList()) {
 			Pattern p = Pattern.compile(rawTitle.toLowerCase());
 			Matcher m = p.matcher(video.getvideoTitle().toLowerCase());
 			if (m.find()) {
@@ -191,10 +191,10 @@ public class VideoOperation extends DataHandler {
 
 	// check video recorder in database
 	public boolean isExist(int newVideoID, String newVideoTitle) {
-		ArrayList<VideoRecorder> videoList = super.readIntoArrayList();
+		ArrayList<VideoRecord> videoList = super.readIntoArrayList();
 		int flag = 0;
 
-		for (VideoRecorder video : videoList) {
+		for (VideoRecord video : videoList) {
 			if (video.getvideoTitle().toLowerCase().equals(newVideoTitle.toLowerCase())
 					|| video.getVideoID() == newVideoID) {
 				flag = 1;
