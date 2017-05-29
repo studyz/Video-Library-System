@@ -40,8 +40,8 @@ public class VideoRecorder implements VideoInfo, BorrowerInfo {
 
 	// video flag
 	@Override
-	public void setVideoFlag() {
-		flag = true;
+	public void setVideoFlag(boolean vflag) {
+		flag = vflag;
 	}
 
 	@Override

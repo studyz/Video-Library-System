@@ -18,7 +18,7 @@ public interface VideoInfo {
 	public String getvideoTitle();
 
 	// set video flag
-	public void setVideoFlag();
+	public void setVideoFlag(boolean flag);
 
 	// get video flag
 	public boolean getVideoFlag();

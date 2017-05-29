@@ -30,7 +30,7 @@ public class VideoOperation extends DataHandler {
 					int newBorrowerID = Integer.parseInt(rawinput.split("\t")[0]);
 					String newborrowerName = rawinput.split("\t")[1];
 
-					videos.get(borrowVideoID).setVideoFlag();
+					videos.get(borrowVideoID).setVideoFlag(true);
 					videos.get(borrowVideoID).setBorrowerID(newBorrowerID);
 					videos.get(borrowVideoID).setborrowerName(newborrowerName);
 					// rw.printVideoList(videos);
@@ -44,7 +44,29 @@ public class VideoOperation extends DataHandler {
 			}
 
 		} else {
-			System.out.println("Please input valid video ID!!");
+			System.out.println("Video not exist!!");
+			// System.out.println("Please input valid video ID!!");
+		}
+	}
+
+	// return video
+	public void returnVideo() {
+		Hashtable<Integer, VideoRecorder> videos = super.readIntoHashTable();
+		try {
+			System.out.print("Please enter Video ID of which you want to return: ");
+			int borrowedVideoID = sc.nextInt();
+			if (isExist(borrowedVideoID, "") == true) {
+				if (videos.get(borrowedVideoID).getVideoFlag() == true) {
+					videos.get(borrowedVideoID).setVideoFlag(false);
+					videos.get(borrowedVideoID).setBorrowerID(-1);
+					videos.get(borrowedVideoID).setborrowerName(null);
+					super.writeHashMap(videos);
+				}
+			} else {
+				System.out.println("Video is not exist!!");
+			}
+		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 
@@ -75,10 +97,10 @@ public class VideoOperation extends DataHandler {
 	public void modifyVideo() {
 
 		ArrayList<VideoRecorder> videos = super.readIntoArrayList();
-		super.printArrayList(videos);
+		// super.printArrayList(videos);
 		System.out.print("Please enter Video ID you wanna modify: ");
 		int delVideoID = sc.nextInt();
-		if (isExist(delVideoID, "") == true && videos.size() != 0) {
+		if (isExist(delVideoID, "") == true) {
 			System.out.print("Please enter new info split with tab: ");
 			Scanner scan = new Scanner(System.in);
 			String newInfo = scan.nextLine();
@@ -101,16 +123,18 @@ public class VideoOperation extends DataHandler {
 				System.out.println("Invalid Input!!");
 			}
 
+		} else {
+			System.out.println("Video is not exist!");
 		}
 	}
 
 	// delete Video recorder, delete video by video ID
 	public void deleteVideo() {
 		ArrayList<VideoRecorder> videos = super.readIntoArrayList();
-		super.printArrayList(videos);
+		// super.printArrayList(videos);
 		System.out.print("Please enter Video ID to delete video: ");
 		int delVideoID = sc.nextInt();
-		if (isExist(delVideoID, "") == true && videos.size() != 0) {
+		if (isExist(delVideoID, "") == true) {
 			for (VideoRecorder video : videos) {
 				if (video.getVideoID() == delVideoID) {
 					videos.remove(video);
@@ -122,7 +146,7 @@ public class VideoOperation extends DataHandler {
 			}
 
 		} else {
-			System.out.println("Please enter valid video ID!!");
+			System.out.println("Video not exist!!!!");
 		}
 
 	}
