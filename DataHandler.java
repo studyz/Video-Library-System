@@ -112,17 +112,25 @@ public class DataHandler implements DataInterface {
 
 	@Override
 	public void printArrayList(ArrayList<VideoRecorder> arrayList) {
-		String line = "Vid\tVtitle\t\tBorrowed\tBid\tBname\n------------------------------------------------------\n";
+		System.out.println("\n---------------------------------------------------------------");
+		System.out.format("%5s%20s %8s %10s %15s\n", "Vid", "Vtitle", "Borrowed", "BorrowerID", "BorrowerName");
+		System.out.println("---------------------------------------------------------------");
+		// String line = "";
 		for (VideoRecorder item : arrayList) {
-			line += item.getVideoID() + "\t" + item.getvideoTitle() + "\t" + item.getVideoFlag();
+			// line += item.getVideoID() + "\t" + item.getvideoTitle() + "\t" +
+			// item.getVideoFlag();
 			if (item.getVideoFlag() != false) {
-				line += "\t\t" + item.getBorrowerID() + "\t" + item.getborrowerName() + "\n";
+				// line += "\t\t" + item.getBorrowerID() + "\t" +
+				// item.getborrowerName() + "\n";
+				System.out.format("%5s%20s %8s %10s %15s\n", item.getVideoID(), item.getvideoTitle(),
+						item.getVideoFlag(), item.getBorrowerID(), item.getborrowerName());
 			} else {
-				line += "\n";
+				System.out.format("%5s%20s %8s \n", item.getVideoID(), item.getvideoTitle(), item.getVideoFlag());
+				// line += "\n";
 			}
 
 		}
-		System.out.print(line);
+		System.out.println("---------------------------------------------------------------");
 
 	}
 

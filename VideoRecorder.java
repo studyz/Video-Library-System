@@ -26,6 +26,8 @@ public class VideoRecorder implements VideoInfo, BorrowerInfo {
 	}
 
 	// video title
+	@Override
+
 	public void setvideoTitle(String vTitle) {
 		videoTitle = vTitle;
 	}
@@ -70,5 +72,7 @@ public class VideoRecorder implements VideoInfo, BorrowerInfo {
 		}
 		return videoInfo;
 	}
+
+
 
 }

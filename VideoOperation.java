@@ -57,7 +57,7 @@ public class VideoOperation extends DataHandler {
 			String newVideoName = input.split("\t")[1];
 
 			if (isExist(newVideoID, newVideoName) == false) {
-				System.out.println("New Video is: " + newVideoID + "\t" + newVideoName + "\n");
+				System.out.println("New Video is: " + newVideoID + "\t" + newVideoName);
 				ArrayList<VideoRecorder> videoList = super.readIntoArrayList();
 				VideoRecorder newVideo = new VideoRecorder(newVideoID, newVideoName, false, 0, "null");
 				videoList.add(newVideo);
@@ -73,20 +73,21 @@ public class VideoOperation extends DataHandler {
 
 	// modify Video recorder, modify video ID & video Title
 	public void modifyVideo() {
-		Scanner scan = new Scanner(System.in);
+		
 		ArrayList<VideoRecorder> videos = super.readIntoArrayList();
 		super.printArrayList(videos);
 		System.out.print("Please enter Video ID you wanna modify: ");
 		int delVideoID = sc.nextInt();
 		if (isExist(delVideoID, "") == true && videos.size() != 0) {
 			System.out.print("Please enter new info split with tab: ");
+			Scanner scan = new Scanner(System.in);
 			String newInfo = scan.nextLine();
 			try {
 				int newVideoID = Integer.parseInt(newInfo.split("\t")[0]);
 				String newVideoName = newInfo.split("\t")[1];
 
-				if (isExist(newVideoID, newVideoName) == false) {
-					System.out.println("New Video is: " + newVideoID + "\t" + newVideoName + "\n");
+				if (delVideoID == newVideoID || isExist(newVideoID, newVideoName) == false) {
+					System.out.println("New Video is: " + newVideoID + "\t" + newVideoName);
 					Hashtable<Integer, VideoRecorder> videolist = super.readIntoHashTable();
 					videolist.get(delVideoID).setVideoID(newVideoID);
 					videolist.get(delVideoID).setvideoTitle(newVideoName);
@@ -147,7 +148,7 @@ public class VideoOperation extends DataHandler {
 	// search Video recorder By video Title
 	public void searchVideoByTitle() {
 
-		System.out.println("Please enter video title: ");
+		System.out.print("Please enter video title: ");
 		String rawTitle = sc.next();
 		ArrayList<VideoRecorder> resulltList = new ArrayList<VideoRecorder>();
 		for (VideoRecorder video : super.readIntoArrayList()) {

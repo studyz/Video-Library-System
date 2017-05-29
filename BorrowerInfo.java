@@ -6,7 +6,7 @@ public interface BorrowerInfo {
 	// get borrowerID
 	public int getBorrowerID();
 
-	// et borrowerID
+	// set borrowerID
 	public void setBorrowerID(int bID);
 
 	// get borrowerName
