@@ -12,10 +12,10 @@ public class VideoOperation extends DataHandler {
 	// list Video recorder, read all videos recorder from file
 	public void listVideo() {
 		super.printArrayList(super.readIntoArrayList());
-		// rw.printArrayList(rw.readIntoArrayList());
 	}
 
-	// borrow Video, modify video recorder borrorwer part, flag, add borrower ID and borrower Name
+	// borrow Video, modify video recorder borrorwer part, flag, add borrower ID
+	// and borrower Name
 	public void borrowVideo() {
 		System.out.print("plz enter video ID you wanna borrow: ");
 
@@ -48,7 +48,7 @@ public class VideoOperation extends DataHandler {
 		}
 	}
 
-	// add Video recorder 
+	// add Video recorder
 	public void addVideo() {
 		System.out.print("plz enter video ID and video title split with tab: ");
 		String input = sc.nextLine();
@@ -73,7 +73,7 @@ public class VideoOperation extends DataHandler {
 
 	// modify Video recorder, modify video ID & video Title
 	public void modifyVideo() {
-		
+
 		ArrayList<VideoRecorder> videos = super.readIntoArrayList();
 		super.printArrayList(videos);
 		System.out.print("Please enter Video ID you wanna modify: ");
@@ -168,7 +168,6 @@ public class VideoOperation extends DataHandler {
 	// check video recorder in database
 	public boolean isExist(int newVideoID, String newVideoTitle) {
 		ArrayList<VideoRecorder> videoList = super.readIntoArrayList();
-		// Hashtable<Integer, Video> videoList = rw.readFile();
 		int flag = 0;
 
 		for (VideoRecorder video : videoList) {

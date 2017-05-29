@@ -17,49 +17,57 @@ public class VideoRecorder implements VideoInfo, BorrowerInfo {
 	}
 
 	// video ID
+	@Override
 	public void setVideoID(int vID) {
 		videoID = vID;
 	}
 
+	@Override
 	public int getVideoID() {
 		return videoID;
 	}
 
 	// video title
 	@Override
-
 	public void setvideoTitle(String vTitle) {
 		videoTitle = vTitle;
 	}
 
+	@Override
 	public String getvideoTitle() {
 		return videoTitle;
 	}
 
 	// video flag
+	@Override
 	public void setVideoFlag() {
 		flag = true;
 	}
 
+	@Override
 	public boolean getVideoFlag() {
 		return flag;
 	}
 
 	// borrower ID
+	@Override
 	public void setBorrowerID(int bID) {
 		borrowerID = bID;
 	}
 
+	@Override
 	public int getBorrowerID() {
 		// TODO Auto-generated method stub
 		return borrowerID;
 	}
 
 	// borrow title
+	@Override
 	public void setborrowerName(String bName) {
 		borrowerName = bName;
 	}
 
+	@Override
 	public String getborrowerName() {
 		return borrowerName;
 	}
@@ -72,7 +80,5 @@ public class VideoRecorder implements VideoInfo, BorrowerInfo {
 		}
 		return videoInfo;
 	}
-
-
 
 }

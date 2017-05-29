@@ -58,7 +58,8 @@ public class VideoSystemStarter {
 
 				// search Video
 				case 6:
-					System.out.println("\nDo you wanna search by\n0.Search by videoID\n1.Search by videoTitle\n=========================");
+					System.out.println(
+							"\nDo you wanna search by\n0.Search by videoID\n1.Search by videoTitle\n=========================");
 					int searchCommand = scan.nextInt();
 					switch (searchCommand) {
 					case 0:

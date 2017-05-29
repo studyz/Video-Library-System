@@ -9,6 +9,7 @@ import java.util.*;
 public class DataHandler implements DataInterface {
 
 	@Override
+	// read data into a arraylist
 	public ArrayList<VideoRecorder> readIntoArrayList() {
 		ArrayList<VideoRecorder> videoList = new ArrayList<VideoRecorder>();
 		try {
@@ -42,6 +43,7 @@ public class DataHandler implements DataInterface {
 	}
 
 	@Override
+	// read data into a hashtable
 	public Hashtable<Integer, VideoRecorder> readIntoHashTable() {
 		Hashtable<Integer, VideoRecorder> videoList = new Hashtable<Integer, VideoRecorder>();
 		try {
@@ -75,6 +77,7 @@ public class DataHandler implements DataInterface {
 	}
 
 	@Override
+	// write data from arraylist
 	public void writeArrayList(ArrayList<VideoRecorder> videoList) {
 		try {
 			PrintWriter output = new PrintWriter(new FileWriter("videodata.dat"));
@@ -93,6 +96,7 @@ public class DataHandler implements DataInterface {
 	}
 
 	@Override
+	// write data from arrayHasmap
 	public void writeHashMap(Hashtable<Integer, VideoRecorder> hashList) {
 		try {
 			PrintWriter output = new PrintWriter(new FileWriter("videodata.dat"));
@@ -111,6 +115,7 @@ public class DataHandler implements DataInterface {
 	}
 
 	@Override
+	// print video recorders from arraylist
 	public void printArrayList(ArrayList<VideoRecorder> arrayList) {
 		System.out.println("\n---------------------------------------------------------------");
 		System.out.format("%5s%20s %8s %10s %15s\n", "Vid", "Vtitle", "Borrowed", "BorrowerID", "BorrowerName");
@@ -131,17 +136,6 @@ public class DataHandler implements DataInterface {
 
 		}
 		System.out.println("---------------------------------------------------------------");
-
-	}
-
-	@Override
-	public void printhHashTable(Hashtable<Integer, VideoRecorder> hashList) {
-		String line = "";
-
-		for (VideoRecorder item : hashList.values()) {
-			line = item.toString();
-			System.out.println(line);
-		}
 
 	}
 
