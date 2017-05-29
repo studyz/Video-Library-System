@@ -9,13 +9,13 @@ import java.util.regex.*;
 public class VideoOperation extends DataHandler {
 	Scanner sc = new Scanner(System.in);
 
-	// list Video, read all videos from file
+	// list Video recorder, read all videos recorder from file
 	public void listVideo() {
 		super.printArrayList(super.readIntoArrayList());
 		// rw.printArrayList(rw.readIntoArrayList());
 	}
 
-	// borrow Video, modify flag, add borrower ID and borrower Name
+	// borrow Video, modify video recorder borrorwer part, flag, add borrower ID and borrower Name
 	public void borrowVideo() {
 		System.out.print("plz enter video ID you wanna borrow: ");
 
@@ -48,7 +48,7 @@ public class VideoOperation extends DataHandler {
 		}
 	}
 
-	// add Video into file
+	// add Video recorder 
 	public void addVideo() {
 		System.out.print("plz enter video ID and video title split with tab: ");
 		String input = sc.nextLine();
@@ -71,7 +71,7 @@ public class VideoOperation extends DataHandler {
 		}
 	}
 
-	// modify Video, modify video ID & video Title
+	// modify Video recorder, modify video ID & video Title
 	public void modifyVideo() {
 		Scanner scan = new Scanner(System.in);
 		ArrayList<VideoRecorder> videos = super.readIntoArrayList();
@@ -103,7 +103,7 @@ public class VideoOperation extends DataHandler {
 		}
 	}
 
-	// delete Video, delete video by video ID
+	// delete Video recorder, delete video by video ID
 	public void deleteVideo() {
 		ArrayList<VideoRecorder> videos = super.readIntoArrayList();
 		super.printArrayList(videos);
@@ -126,7 +126,7 @@ public class VideoOperation extends DataHandler {
 
 	}
 
-	// search Video By video ID
+	// search Video recorder By video ID
 	public void searchVideoByID() {
 
 		System.out.print("Please enter video ID: ");
@@ -144,7 +144,7 @@ public class VideoOperation extends DataHandler {
 		}
 	}
 
-	// search Video By video Title
+	// search Video recorder By video Title
 	public void searchVideoByTitle() {
 
 		System.out.println("Please enter video title: ");
@@ -164,7 +164,7 @@ public class VideoOperation extends DataHandler {
 		}
 	}
 
-	// check video in database
+	// check video recorder in database
 	public boolean isExist(int newVideoID, String newVideoTitle) {
 		ArrayList<VideoRecorder> videoList = super.readIntoArrayList();
 		// Hashtable<Integer, Video> videoList = rw.readFile();

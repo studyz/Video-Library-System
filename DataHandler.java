@@ -112,11 +112,11 @@ public class DataHandler implements DataInterface {
 
 	@Override
 	public void printArrayList(ArrayList<VideoRecorder> arrayList) {
-		String line = "Vid\tVtitle\t\tFlag\tBid\tBname\n------------------------------------\n";
+		String line = "Vid\tVtitle\t\tBorrowed\tBid\tBname\n------------------------------------------------------\n";
 		for (VideoRecorder item : arrayList) {
 			line += item.getVideoID() + "\t" + item.getvideoTitle() + "\t" + item.getVideoFlag();
 			if (item.getVideoFlag() != false) {
-				line += "\t" + item.getBorrowerID() + "\t" + item.getborrowerName() + "\n";
+				line += "\t\t" + item.getBorrowerID() + "\t" + item.getborrowerName() + "\n";
 			} else {
 				line += "\n";
 			}
